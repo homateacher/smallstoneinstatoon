@@ -22,21 +22,10 @@
     color:var(--text); font-family:system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, Noto Sans KR, sans-serif;
   }
   .wrap{max-width:980px; margin:32px auto; padding:0 16px}
-  header{
-    display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:18px
-  }
-  .logo{
-    font-weight:800; font-size:clamp(20px, 2.8vw, 28px); letter-spacing:.2px;
-    display:flex; align-items:center; gap:10px
-  }
-  .pill{
-    font-size:12px; padding:4px 10px; border-radius:999px; background:#082f49; color:#a5f3fc; border:1px solid #0ea5b6;
-  }
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.25);
-  }
+  header{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:18px}
+  .logo{font-weight:800; font-size:clamp(20px, 2.8vw, 28px); letter-spacing:.2px; display:flex; align-items:center; gap:10px}
+  .pill{font-size:12px; padding:4px 10px; border-radius:999px; background:#082f49; color:#a5f3fc; border:1px solid #0ea5b6;}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.25);}
   .row{display:flex; gap:14px; flex-wrap:wrap}
   .grow{flex:1 1 320px}
   input, button, select{
@@ -44,9 +33,7 @@
     border-radius:12px; padding:12px 14px; font-size:15px; outline:none;
   }
   input:focus, select:focus{border-color:var(--accent); box-shadow:0 0 0 4px rgba(34,211,238,.15)}
-  button{
-    cursor:pointer; transition:.2s transform, .2s opacity; font-weight:700;
-  }
+  button{cursor:pointer; transition:.2s transform, .2s opacity; font-weight:700;}
   button:hover{transform:translateY(-1px); opacity:.95}
   .btn-primary{background:linear-gradient(180deg,#0ea5b6,#0891b2); border-color:#06b6d4}
   .btn-premium{background:linear-gradient(180deg,#34d399,#10b981); border-color:#10b981}
@@ -57,9 +44,7 @@
   .col-6{grid-column:span 6}
   .col-12{grid-column:span 12}
   @media(max-width:860px){.col-6{grid-column:span 12}}
-  .out{
-    padding:14px; border-radius:14px; background:#0a0f1a; border:1px dashed rgba(255,255,255,.12)
-  }
+  .out{padding:14px; border-radius:14px; background:#0a0f1a; border:1px dashed rgba(255,255,255,.12)}
   .lbl{font-size:12px; color:#a7f3d0; letter-spacing:.3px; text-transform:uppercase; margin-bottom:6px}
   .big{font-size:clamp(18px, 2.2vw, 22px); font-weight:800; line-height:1.35}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; color:#a5b4fc}
@@ -190,7 +175,7 @@
 
 <script>
 /* -----------------------------
-   유틸 & 사운드 (가벼운 클릭 피드백)
+   유틸 & 사운드
 ------------------------------*/
 const $ = (q)=>document.querySelector(q);
 function beep(){
@@ -210,50 +195,16 @@ function pickByCategory(arr,cat){ return cat==='any' ? arr : arr.filter(x=>x.cat
 
 /* -----------------------------
    무료 데이터 (핵심 32개 샘플)
-   - 기존 앱의 톤을 유지하면서도 중복 낮춤
 ------------------------------*/
 const freeData = [
-  {category:'일상공감', difficulty:'쉬움',
-   topic:'알람과의 밀당', 
-   hint:'알람이 의인화되어 주인공과 썸타듯 대화. 마지막엔 “또 내일 보자” 엔딩.',
-   money:'알람 배경화면·벨소리 디지털 굿즈 / 수면 브랜드 콜라보'},
-
-  {category:'학교/학생', difficulty:'쉬움',
-   topic:'급식의 속마음',
-   hint:'식판·국자·우유팩이 서로의 고충을 털어놓는 4컷.',
-   money:'급식 밈 스티커팩 / 교육 플랫폼 콜라보 콘텐츠'},
-
-  {category:'직장/사업', difficulty:'보통',
-   topic:'카톡 읽씹의 미학',
-   hint:'말풍선 캐릭터가 “읽음 1”과 “읽음 0”으로 분열대립.',
-   money:'직장인 공감 굿즈 / 업무툴 광고 연계'},
-
-  {category:'연애/관계', difficulty:'보통',
-   topic:'데이트 일정 회의',
-   hint:'캘린더·메모앱·지갑이 회의하는 회의록 형태.',
-   money:'데이트 플래너 템플릿 / 협업 데이트앱 제휴'},
-
-  {category:'트렌드/밈', difficulty:'쉬움',
-   topic:'밈 한 숟갈',
-   hint:'유행 밈을 “과하게” 뿌리는 요리사 캐릭터.',
-   money:'밈 사운드팩 / 숏폼 묶음 패키지'},
-
-  {category:'동물/사물의인화', difficulty:'쉬움',
-   topic:'충전기들의 회의',
-   hint:'C타입·라이트닝·마그세이프가 서로 서열 정리.',
-   money:'케이블 타이/스티커 / 모바일 악세사리 샵 콜라보'},
-
-  {category:'취미/라이프', difficulty:'보통',
-   topic:'운동 시작 버튼이 고장',
-   hint:'“내일부터” 버튼이 실제로 찢겨있음. 오늘 버튼과의 화해.',
-   money:'습관체크 노트 / 운동앱 제휴 쿠폰'},
-
-  {category:'자기계발/마음', difficulty:'쉬움',
-   topic:'작심삼일의 반전',
-   hint:'3일마다 리스폰하는 캐릭터. 레벨업 시스템 도입.',
-   money:'도전 미션 PDF / 후원 멤버십(주간 챌린지)'},
-
-  // +24개 더 (간결 서술로 용량 최적화)
+  {category:'일상공감', difficulty:'쉬움', topic:'알람과의 밀당', hint:'알람이 의인화되어 주인공과 썸타듯 대화. 마지막엔 “또 내일 보자” 엔딩.', money:'알람 배경화면·벨소리 디지털 굿즈 / 수면 브랜드 콜라보'},
+  {category:'학교/학생', difficulty:'쉬움', topic:'급식의 속마음', hint:'식판·국자·우유팩이 서로의 고충을 털어놓는 4컷.', money:'급식 밈 스티커팩 / 교육 플랫폼 콜라보 콘텐츠'},
+  {category:'직장/사업', difficulty:'보통', topic:'카톡 읽씹의 미학', hint:'말풍선 캐릭터가 “읽음 1”과 “읽음 0”으로 분열대립.', money:'직장인 공감 굿즈 / 업무툴 광고 연계'},
+  {category:'연애/관계', difficulty:'보통', topic:'데이트 일정 회의', hint:'캘린더·메모앱·지갑이 회의하는 회의록 형태.', money:'데이트 플래너 템플릿 / 협업 데이트앱 제휴'},
+  {category:'트렌드/밈', difficulty:'쉬움', topic:'밈 한 숟갈', hint:'유행 밈을 “과하게” 뿌리는 요리사 캐릭터.', money:'밈 사운드팩 / 숏폼 묶음 패키지'},
+  {category:'동물/사물의인화', difficulty:'쉬움', topic:'충전기들의 회의', hint:'C타입·라이트닝·마그세이프가 서로 서열 정리.', money:'케이블 타이/스티커 / 모바일 악세사리 샵 콜라보'},
+  {category:'취미/라이프', difficulty:'보통', topic:'운동 시작 버튼이 고장', hint:'“내일부터” 버튼이 실제로 찢겨있음. 오늘 버튼과의 화해.', money:'습관체크 노트 / 운동앱 제휴 쿠폰'},
+  {category:'자기계발/마음', difficulty:'쉬움', topic:'작심삼일의 반전', hint:'3일마다 리스폰하는 캐릭터. 레벨업 시스템 도입.', money:'도전 미션 PDF / 후원 멤버십(주간 챌린지)'},
   {category:'일상공감', difficulty:'쉬움', topic:'세탁기 던전', hint:'양말이 사라지는 판타지 맵', money:'양말 캐릭터 굿즈' },
   {category:'일상공감', difficulty:'쉬움', topic:'택배의 모험', hint:'문앞까지의 RPG 여정', money:'문구/스티커팩' },
   {category:'학교/학생', difficulty:'쉬움', topic:'지우개의 속삭임', hint:'틀린답 지워주는 심리', money:'교사용/수험생 굿즈' },
@@ -263,8 +214,7 @@ const freeData = [
   {category:'연애/관계', difficulty:'쉬움', topic:'안읽씹의 해명', hint:'기지국 장애가 주인공', money:'문자템플릿/엽서' },
   {category:'연애/관계', difficulty:'보통', topic:'썸의 온도계', hint:'섭씨/화씨가 다툼', money:'연애 체크카드' },
   {category:'트렌드/밈', difficulty:'쉬움', topic:'댓글 고래 소환', hint:'좋아요 고래가 등장', money:'댓글 챌린지 스폰서' },
-  {category:'트렌드/밈', difficulty:'쉬움', topic:'필터 과다 국',
-    hint:'필터를 요리처럼 뿌림', money:'프리셋/룩북 판매' },
+  {category:'트렌드/밈', difficulty:'쉬움', topic:'필터 과다 국', hint:'필터를 요리처럼 뿌림', money:'프리셋/룩북 판매' },
   {category:'동물/사물의인화', difficulty:'쉬움', topic:'우산의 일기', hint:'비오는 날만 출근', money:'우산커버/스티커' },
   {category:'동물/사물의인화', difficulty:'쉬움', topic:'머그컵 상담소', hint:'카페인 조절 상담', money:'머그/굿즈 번들' },
   {category:'취미/라이프', difficulty:'쉬움', topic:'테트리스 냉장고', hint:'정리의 쾌감', money:'정리템 제휴' },
@@ -288,9 +238,7 @@ const freeData = [
 ];
 
 /* -----------------------------
-   프리미엄 생성기
-   - 조합 템플릿으로 120+ 유니크 항목 생성
-   - 매 추천마다 조건에 맞춰 샘플링
+   프리미엄 생성기 (160+ 조합 풀)
 ------------------------------*/
 const BANK = {
   categories:['일상공감','학교/학생','직장/사업','연애/관계','트렌드/밈','동물/사물의인화','취미/라이프','자기계발/마음'],
@@ -336,54 +284,50 @@ const BANK = {
   difficultyWeights:[
     {name:'쉬움', weight:4},
     {name:'보통', weight:3},
-    {name:'상세', weight:3}, // 프리미엄에서 주로 사용
+    {name:'상세', weight:3},
   ]
 };
+
+function choice(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+function pickByCategory(arr,cat){ return cat==='any' ? arr : arr.filter(x=>x.category===cat) }
 
 function generatePremiumPool(n=140){
   const out=[];
   const {categories, settings, protagonists, twists, monetization, hints, beatsTemplates, marketing, ctas, difficultyWeights} = BANK;
   const diffPool = difficultyWeights.flatMap(d=>Array(d.weight).fill(d.name));
-  // 다양성을 높이기 위해 랜덤 조합
   while(out.length<n){
     const category = choice(categories);
     const difficulty = choice(diffPool);
     const set = choice(settings);
     const pro = choice(protagonists);
     const tw = choice(twists);
-
     const topic = `${set}의 ${pro} — ${tw}`;
     const hint = `${choice(hints)} / 오마주: ${tw}`;
     const money = choice(monetization);
     const mPoint = choice(marketing);
     const beats = choice(beatsTemplates);
     const cta = choice(ctas);
-
-    // 중복 최소화
     if(!out.some(x=>x.topic===topic)){
       out.push({category, difficulty, topic, hint, money, mPoint, beats, cta});
     }
   }
   return out;
 }
-let premiumPool = generatePremiumPool(160); // 160개 확보(중복 검사)
+let premiumPool = generatePremiumPool(160);
 
 /* -----------------------------
    상태 / 인증
 ------------------------------*/
 const STATE = {
   isPremium: false,
-  dataset: {
-    free: freeData,
-    premium: premiumPool
-  }
+  dataset: { free: freeData, premium: premiumPool }
 };
-const PW = 'Whdirehfakdmf'; // 데모용: 클라이언트 보관(가벼운 차단)
+const PW = 'Whdirehfakdmf'; // 데모용 비밀번호
 
 function saveAuth(v){ localStorage.setItem('instatoon_premium', v?'1':'0') }
 function loadAuth(){ return localStorage.getItem('instatoon_premium')==='1' }
 function reflectAuth(){
-  $('#authState').textContent = STATE.isPremium ? 'unlocked' : 'locked';
+  document.querySelector('#authState').textContent = STATE.isPremium ? 'unlocked' : 'locked';
   document.querySelectorAll('.prem').forEach(el=> el.classList.toggle('hidden', !STATE.isPremium));
 }
 
@@ -391,57 +335,41 @@ function reflectAuth(){
    추천 로직
 ------------------------------*/
 function drawOne({wantPremium=false}={}){
-  const cat = $('#category').value;
-  const diff = $('#difficulty').value;
-
-  // 소스 선택
-  const pool = (wantPremium && STATE.isPremium)
-    ? STATE.dataset.premium
-    : STATE.dataset.free;
-
-  // 카테고리 필터
+  const cat = document.querySelector('#category').value;
+  const diff = document.querySelector('#difficulty').value;
+  const pool = (wantPremium && STATE.isPremium) ? STATE.dataset.premium : STATE.dataset.free;
   let cand = pickByCategory(pool, cat);
-
-  // 난이도 필터
-  if(diff!=='any'){
-    cand = cand.filter(x=> (x.difficulty||'보통')===diff);
-    if(cand.length<1){ cand = pool } // 백업
-  }
+  if(diff!=='any'){ cand = cand.filter(x=> (x.difficulty||'보통')===diff); if(cand.length<1){ cand = pool } }
   if(cand.length<1){ cand = pool }
-
-  const item = choice(cand);
-
-  // 출력
-  $('#outTopic').textContent = item.topic;
-  $('#outHint').textContent = item.hint;
-  $('#outMoney').textContent = item.money;
-
+  const item = cand[Math.floor(Math.random()*cand.length)];
+  document.querySelector('#outTopic').textContent = item.topic;
+  document.querySelector('#outHint').textContent = item.hint;
+  document.querySelector('#outMoney').textContent = item.money;
   if(STATE.isPremium){
-    $('#outMarketing').textContent = item.mPoint || '—';
-    $('#outBeats').textContent = item.beats || '—';
-    $('#outCTA').textContent = item.cta || '—';
+    document.querySelector('#outMarketing').textContent = item.mPoint || '—';
+    document.querySelector('#outBeats').textContent = item.beats || '—';
+    document.querySelector('#outCTA').textContent = item.cta || '—';
   }
 }
-
 function copyAll(){
   const lines = [
     `# 인스타툰 주제`,
-    `- 주제: ${$('#outTopic').textContent}`,
-    `- 힌트: ${$('#outHint').textContent}`,
-    `- 수익화: ${$('#outMoney').textContent}`,
+    `- 주제: ${document.querySelector('#outTopic').textContent}`,
+    `- 힌트: ${document.querySelector('#outHint').textContent}`,
+    `- 수익화: ${document.querySelector('#outMoney').textContent}`,
   ];
   if(STATE.isPremium){
     lines.push(
-      `- 마케팅 포인트: ${$('#outMarketing').textContent}`,
-      `- 전개 템플릿: ${$('#outBeats').textContent}`,
-      `- 참여 유도: ${$('#outCTA').textContent}`
+      `- 마케팅 포인트: ${document.querySelector('#outMarketing').textContent}`,
+      `- 전개 템플릿: ${document.querySelector('#outBeats').textContent}`,
+      `- 참여 유도: ${document.querySelector('#outCTA').textContent}`
     );
   }
   const txt = lines.join('\n');
   navigator.clipboard.writeText(txt).then(()=> {
     beep();
-    $('#btnCopy').textContent='복사 완료!';
-    setTimeout(()=>$('#btnCopy').textContent='복사하기', 1200);
+    document.querySelector('#btnCopy').textContent='복사 완료!';
+    setTimeout(()=>document.querySelector('#btnCopy').textContent='복사하기', 1200);
   });
 }
 
@@ -449,41 +377,33 @@ function copyAll(){
    이벤트 바인딩
 ------------------------------*/
 window.addEventListener('DOMContentLoaded', ()=>{
-  // 인증 초기화
   STATE.isPremium = loadAuth();
   reflectAuth();
 
-  $('#btnUnlock').addEventListener('click', ()=>{
-    const val = ($('#pw').value||'').trim();
+  document.querySelector('#btnUnlock').addEventListener('click', ()=>{
+    const val = (document.querySelector('#pw').value||'').trim();
     if(val===PW){
-      STATE.isPremium = true;
-      saveAuth(true);
-      reflectAuth();
-      beep();
-      // 프리미엄 바로 1회 출력
+      STATE.isPremium = true; saveAuth(true); reflectAuth(); beep();
       drawOne({wantPremium:true});
     }else{
       alert('비밀번호가 올바르지 않습니다.');
     }
   });
-  $('#btnLock').addEventListener('click', ()=>{
+  document.querySelector('#btnLock').addEventListener('click', ()=>{
     STATE.isPremium=false; saveAuth(false); reflectAuth(); beep();
   });
 
-  // 추천 버튼
-  $('#btnFree').addEventListener('click', ()=>{ drawOne({wantPremium:false}); beep(); });
-  $('#btnPremium').addEventListener('click', ()=>{
+  document.querySelector('#btnFree').addEventListener('click', ()=>{ drawOne({wantPremium:false}); beep(); });
+  document.querySelector('#btnPremium').addEventListener('click', ()=>{
     if(!STATE.isPremium){ alert('프리미엄 열기 후 사용 가능합니다.'); return; }
     drawOne({wantPremium:true}); beep();
   });
-  $('#btnNew').addEventListener('click', ()=>{ 
+  document.querySelector('#btnNew').addEventListener('click', ()=>{ 
     const premiumWanted = STATE.isPremium && Math.random()>.4;
     drawOne({wantPremium:premiumWanted}); beep();
   });
+  document.querySelector('#btnCopy').addEventListener('click', copyAll);
 
-  $('#btnCopy').addEventListener('click', copyAll);
-
-  // 최초 안내 한 번 뽑기
   drawOne({wantPremium:false});
 });
 </script>
